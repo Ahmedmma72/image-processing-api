@@ -1,9 +1,7 @@
 import { Router } from 'express';
-import middleware from './utilities/middleware';
+import images from './api/images';
 const router = Router();
 
-router.get('/', middleware, (req, res) => {
-  res.send('testing routes');
-});
+router.use('/', images);
 
 export default router;
