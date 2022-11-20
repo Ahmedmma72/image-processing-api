@@ -27,8 +27,8 @@ const resizeImage = async (req: Request, res: Response): Promise<void> => {
     await sharp(imagePath).resize(w, h).toFile(newImagePath);
   } catch (error) {
     res.status(500).send('failed to process the image');
+    return;
   }
-  console.log('new cached image');
   res.status(200).sendFile(newImagePath);
 };
 

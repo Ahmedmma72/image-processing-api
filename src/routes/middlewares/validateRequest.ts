@@ -7,7 +7,6 @@ const validateRequest = (
   res: Response,
   next: NextFunction
 ): void => {
-  console.log('validate request');
   const { filename, width, height } = req.query;
   if (!filename) {
     res.status(400).send('fileName parameter messing');

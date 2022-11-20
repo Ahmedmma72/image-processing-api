@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import validateRequest from '../utilities/validateRequest';
-import handleCaching from '../utilities/handleCaching';
-import resizeImage from '../utilities/resizeImage';
+import validateRequest from '../middlewares/validateRequest';
+import handleCaching from '../middlewares/handleCaching';
+import resizeImage from '../middlewares/resizeImage';
 const images = Router();
 
 images.get('/images', validateRequest, handleCaching, resizeImage);

@@ -17,10 +17,9 @@ const handleCaching = (req: Request, res: Response, next: NextFunction) => {
     imageName
   );
   if (!existsSync(cachePath)) {
-    console.log('no cached image');
     next();
   } else {
-    res.status(200).sendFile(cachePath);
+    res.status(304).sendFile(cachePath);
   }
 };
 
