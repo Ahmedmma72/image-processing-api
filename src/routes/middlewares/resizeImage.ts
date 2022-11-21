@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync } from 'fs';
 import { Response, Request } from 'express';
 import path from 'path';
-import sharp from 'sharp';
+import resizeImageUtil from '../utils/resizeImageUtil';
 
 const resizeImage = async (req: Request, res: Response): Promise<void> => {
   const { filename, width, height } = req.query;
@@ -24,7 +24,7 @@ const resizeImage = async (req: Request, res: Response): Promise<void> => {
   }
   const newImagePath = path.join(cachePath, newImage);
   try {
-    await sharp(imagePath).resize(w, h).toFile(newImagePath);
+    await resizeImageUtil(imagePath, w, h, newImagePath);
   } catch (error) {
     res.status(500).send('failed to process the image');
     return;
